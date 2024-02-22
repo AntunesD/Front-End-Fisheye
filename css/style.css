@@ -42,9 +42,45 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 0;
+    font-weight: 100;
 }
 
-.photographer_section article img {
+.profil-img {
+    overflow: hidden;
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profil-img img {
+width: 110%;
+}
+
+.profil-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profil-info p {
+    margin: 0;
+}
+
+.profil-country {
+    font-size: 13px;
+    color : #901C1C; 
+}
+
+.profil-tagline {
+    font-size: 10px;
+}
+
+.profil-price {
+    font-size: 9px;
+    color: #757575;
 }
