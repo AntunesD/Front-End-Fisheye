@@ -46,41 +46,39 @@ h1 {
     font-weight: 100;
 }
 
-.profil-img {
-    overflow: hidden;
+.photographer_section article h1 {
+display: none;    
+}
+
+
+.profil-link img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
 }
 
-.profil-img img {
-width: 110%;
-}
-
-.profil-info {
+.photographer_section .profil-info {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.profil-info p {
+.photographer_section .profil-info p {
     margin: 0;
 }
 
-.profil-country {
+.photographer_section .profil-country {
     font-size: 13px;
     color : #901C1C; 
 }
 
-.profil-tagline {
+.photographer_section .profil-tagline {
     font-size: 10px;
 }
 
-.profil-price {
+.photographer_section .profil-price {
     font-size: 9px;
     color: #757575;
 }
