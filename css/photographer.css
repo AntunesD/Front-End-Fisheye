@@ -98,7 +98,7 @@ form input {
 
 .photograph-header .profil-country {
     font-size: 24px;
-    color : #901C1C; 
+    color: #901C1C;
 }
 
 .photograph-header .profil-tagline {
@@ -117,4 +117,65 @@ form input {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 100px 0 100px;
+}
+
+.media {
+    width: 28%;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.media a {
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.media img {
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.media div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.media p {
+    font-size: 24px;
+    color: #901C1C;
+    margin-top: 10px;
+}
+
+.likes {
+    font-weight: bold;
+    text-wrap: nowrap;
+}
+
+.likes_price {
+    bottom: 0;
+    right: 36px;
+    position: fixed;
+    height: 69px;
+    width: 376px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #DB8876;
+    padding: 0 34px 0 34px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
 }

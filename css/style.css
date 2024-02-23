@@ -44,6 +44,7 @@ h1 {
     font-size: 36px;
     margin-bottom: 0;
     font-weight: 100;
+    text-wrap: nowrap;
 }
 
 .photographer_section article h1 {
