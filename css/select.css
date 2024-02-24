@@ -1,0 +1,85 @@
+label {
+    margin-left: 100px;
+    margin-right: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    appearance: none;
+    border: none;
+    background: none;
+}
+
+.menu-button {
+    width: 150px;
+    min-height: 29px;
+    background-color: #901C1C;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.menu-button:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
+.options {
+    line-height: 49px;
+    display: none;
+    position: absolute;
+    background-color: #901C1C;
+    color: white;
+    width: 190px;
+    z-index: 1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.option {
+    text-align: left;
+    border-top: 2px solid white;
+    margin: 0 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
+.fa-chevron-up::before {
+    display: none;
+}
+
+.fa-chevron-down {
+    position: absolute;
+    right: 18px;
+}
+
+.menu-button[aria-expanded="true"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.menu-button[aria-expanded="true"] .fa-chevron-down {
+    display: none;
+}
+
+.menu-button[aria-expanded="true"] .fa-chevron-up::before {
+    display: inline;
+  
+}

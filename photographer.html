@@ -1,45 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="./index.html" >
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
-      </a>
-    </header>
-    <main id="main">
-      <section class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </section>
-<section class="photos"></section>
-<div class="likes_price"></div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="scripts/callData/callData.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
 
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/templates/photo.js"></script>
-  </body>
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
+  </header>
+  <main id="main">
+    <section class="photograph-header">
+      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    </section>
+
+    <label id="menu-label" for="menu-button" class="menu-label">Trier par </label>
+    <button class="menu" role="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="menu-label">
+      <div class="menu-button" id="menu-button" aria-selected="true">
+        Popularité
+        <i class="fas fa-chevron-down fa-chevron"></i>
+        <i class="fas fa-chevron-up fa-chevron"></i>
+      </div>
+      <div class="options" role="listbox" aria-labelledby="menu-button">
+        <div class="option" role="option" aria-selected="true" tabindex="0">Popularité</div>
+        <div class="option" role="option" aria-selected="false" tabindex="-1">Date</div>
+        <div class="option" role="option" aria-selected="false" tabindex="-1">Titre</div>
+      </div>
+    </button>
+
+    <section class="photos"></section>
+    <div class="likes_price"></div>
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div>
+          <label>Prénom</label>
+          <input />
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <script src="scripts/callData/callData.js"></script>
+  <script src="/scripts/pages/photographerPage.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+<script src="/scripts/utils/select.js"></script>
+  <script src="scripts/templates/photographer.js"></script>
+  <script src="scripts/templates/photos.js"></script>
+</body>
+
 </html>

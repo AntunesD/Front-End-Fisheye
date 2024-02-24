@@ -1,0 +1,65 @@
+@import url("photos.css");
+@import url("modal.css");
+@import url("select.css");
+
+.photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    position: relative;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+}
+
+.photograph-header .contact_button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 58px 100px 0 100px;
+}
+
+.likes_price {
+    bottom: 0;
+    right: 36px;
+    position: fixed;
+    height: 69px;
+    width: 376px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #DB8876;
+    padding: 0 34px 0 34px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+

@@ -39,9 +39,7 @@ async function init() {
     displayPhotographerData(filteredPhotographers);
 
     // Récupérer le nom du photographe correspondant à photographerId
-    const photographerName = photographers.find(
-      (photographer) => photographer.id == photographerId
-    )?.name;
+    const photographerName = filteredPhotographers[0].name;
 
     // Extraire la première partie du nom du photographe
     const firstName = photographerName.split(" ")[0];
@@ -50,28 +48,32 @@ async function init() {
     const filteredMedia = media.filter(
       (item) => item.photographerId == photographerId
     );
+    totalLikes(filteredMedia);
+    selected(firstName, filteredMedia)
 
-    // Calculer la somme des likes des médias
-    const totalLikes = filteredMedia.reduce(
-      (total, mediaItem) => total + mediaItem.likes,
-      0
-    );
-
-    // Sélectionner l'élément où placer le résultat
-    const likesPriceElement = document.querySelector(".likes_price");
-    // Placer le résultat dans l'élément
-    const textTotalLikes = document.createElement("p");
-    textTotalLikes.textContent = totalLikes.toString() + " \u2764";
-    likesPriceElement.appendChild(textTotalLikes);
-
-    // Afficher les médias du photographe
-    displayPhotographerMedia(firstName, filteredMedia);
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de l'initialisation de l'application :",
       error
     );
+    return 
   }
+}
+
+function totalLikes(filteredMedia) {
+  // Calculer la somme des likes des médias
+  const totalLikes = filteredMedia.reduce(
+    (total, mediaItem) => total + mediaItem.likes,
+    0
+  );
+
+  // Sélectionner l'élément où placer le résultat
+  const likesPriceElement = document.querySelector(".likes_price");
+  // Placer le résultat dans l'élément
+  const textTotalLikes = document.createElement("p");
+  textTotalLikes.classList.add("likes_total");
+  textTotalLikes.textContent = totalLikes.toString() + " \u2764";
+  likesPriceElement.appendChild(textTotalLikes);
 }
 
 // Lancer l'initialisation de l'application
