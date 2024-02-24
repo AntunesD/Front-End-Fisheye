@@ -44,19 +44,24 @@ async function init() {
     // Extraire la première partie du nom du photographe
     const firstName = photographerName.split(" ")[0];
 
+    // Récupérer l'élément <h2> dans la modal
+    var modalHeader = document.querySelector("#contact_modal .modal header h2");
+
+    // Ajouter le nom du photographe à l'élément <h2>
+    modalHeader.innerHTML += ` <br> ${photographerName}`;
+
     // Filtrer les médias par photographerId
     const filteredMedia = media.filter(
       (item) => item.photographerId == photographerId
     );
     totalLikes(filteredMedia);
-    selected(firstName, filteredMedia)
-
+    selected(firstName, filteredMedia);
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de l'initialisation de l'application :",
       error
     );
-    return 
+    return;
   }
 }
 

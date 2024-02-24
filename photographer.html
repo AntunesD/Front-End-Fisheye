@@ -22,8 +22,9 @@
     </section>
 
     <label id="menu-label" for="menu-button" class="menu-label">Trier par </label>
-    <button class="menu" role="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="menu-label">
-      <div class="menu-button" id="menu-button" aria-selected="true">
+    <button class="menu" id="menu-button" role="button" aria-haspopup="listbox" aria-expanded="false"
+      aria-labelledby="menu-label">
+      <div class="menu-button" aria-selected="true">
         Popularité
         <i class="fas fa-chevron-down fa-chevron"></i>
         <i class="fas fa-chevron-up fa-chevron"></i>
@@ -38,6 +39,7 @@
     <section class="photos"></section>
     <div class="likes_price"></div>
   </main>
+
   <div id="contact_modal">
     <div class="modal">
       <header>
@@ -46,13 +48,26 @@
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="nom">Nom</label>
+          <input type="text" name="nom" id="nom" />
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div>
+          <label for="prenom">Prénom</label>
+          <input type="text" name="prenom" id="prenom" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div>
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="contact_button">Envoyer</button>
       </form>
     </div>
   </div>
+
   <script src="scripts/callData/callData.js"></script>
   <script src="/scripts/pages/photographerPage.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>

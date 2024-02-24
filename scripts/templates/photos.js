@@ -12,7 +12,12 @@ function displayPhotographerMedia(firstName, filteredMedia) {
     // Créer le lien pour afficher la modal
     const link = document.createElement("a");
     link.addEventListener("click", () => {
-      displayModalPhoto(filteredMedia, firstName ,item.image ? item.image : item.video, item.title);
+      displayModalPhoto(
+        filteredMedia,
+        firstName,
+        item.image ? item.image : item.video,
+        item.title
+      );
     });
 
     const imageElement = document.createElement(item.image ? "img" : "video");
@@ -32,10 +37,17 @@ function displayPhotographerMedia(firstName, filteredMedia) {
     like.addEventListener("click", () => {
       const totalLikesElement = document.querySelector(".likes_total");
       let totalLikes = parseInt(totalLikesElement.textContent);
-      totalLikes++;
-      totalLikesElement.textContent = totalLikes + " \u2764";
-      item.likes++;
-      like.textContent = item.likes + " \u2764";
+
+      // Vérifier si le like n'a pas déjà été donné
+      if (!like.classList.contains("liked")) {
+        totalLikes++;
+        totalLikesElement.textContent = totalLikes + " \u2764";
+        item.likes++;
+        like.textContent = item.likes + " \u2764";
+
+        // Ajouter la classe "liked" pour indiquer que le like a été donné
+        like.classList.add("liked");
+      }
     });
 
     like.classList.add("likes");
