@@ -2,6 +2,22 @@ const menuButton = document.querySelector(".menu-button");
 const options = document.querySelector(".options");
 const optionItems = document.querySelectorAll(".option");
 
+
+// Fonction pour masquer les options
+function hideOptions() {
+    options.style.display = "none";
+    menuButton.setAttribute("aria-expanded", "false");
+}
+
+// Gestionnaire d'événements de clic sur le document entier
+document.addEventListener("click", function(event) {
+    // Vérifier si le clic n'est pas sur le menuButton ni sur les options
+    if (!menuButton.contains(event.target) && !options.contains(event.target)) {
+        hideOptions();
+    }
+});
+
+
 menuButton.addEventListener("click", function () {
   const expanded = this.getAttribute("aria-expanded") === "true" || false;
   this.setAttribute("aria-expanded", !expanded);

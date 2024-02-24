@@ -9,7 +9,12 @@ function displayPhotographerMedia(firstName, filteredMedia) {
     const mediaElement = document.createElement("article");
     mediaElement.classList.add("media");
 
+    // Créer le lien pour afficher la modal
     const link = document.createElement("a");
+    link.addEventListener("click", () => {
+      displayModalPhoto(filteredMedia, firstName ,item.image ? item.image : item.video, item.title);
+    });
+
     const imageElement = document.createElement(item.image ? "img" : "video");
     imageElement.src = `../../assets/images/${firstName}/${
       item.image ? item.image : item.video

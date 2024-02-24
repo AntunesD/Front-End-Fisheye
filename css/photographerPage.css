@@ -1,6 +1,7 @@
 @import url("photos.css");
 @import url("modal.css");
 @import url("select.css");
+@import url("modalPhoto.css");
 
 .photograph-header {
     display: flex;
