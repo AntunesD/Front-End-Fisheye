@@ -7,16 +7,18 @@ function displayModalPhoto(filteredMedia, firstName, src, title) {
   const modalContent = document.createElement("div");
   modalContent.classList.add("modal-content");
 
-  const closeButton = document.createElement("span");
+  const closeButton = document.createElement("button");
   closeButton.textContent = "×";
   closeButton.classList.add("close-button");
+  closeButton.setAttribute("aria-label", "Fermer la modal");
   closeButton.onclick = function () {
     modal.remove();
   };
 
-  const leftArrow = document.createElement("span");
-  leftArrow.innerHTML = `<i class="fa-solid fa-chevron-left"></i>`;
+  const leftArrow = document.createElement("button");
+  leftArrow.innerHTML = `<span class="fa-solid fa-chevron-left"></span>`;
   leftArrow.classList.add("arrow", "left-arrow");
+  leftArrow.setAttribute("aria-label", "Photo précédente");
   leftArrow.onclick = afficherMediaPrecedent;
 
   // Fonction pour afficher le média précédent
@@ -43,9 +45,10 @@ function displayModalPhoto(filteredMedia, firstName, src, title) {
     );
   }
 
-  const rightArrow = document.createElement("span");
-  rightArrow.innerHTML = `<i class="fa-solid fa-chevron-right"></i>`;
+  const rightArrow = document.createElement("button");
+  rightArrow.innerHTML = `<span class="fa-solid fa-chevron-right"></span>`;
   rightArrow.classList.add("arrow", "right-arrow");
+  rightArrow.setAttribute("aria-label", "Photo suivante");
   rightArrow.onclick = afficherMediaSuivant;
   // Fonction pour afficher le média suivant
   function afficherMediaSuivant() {
@@ -72,6 +75,12 @@ function displayModalPhoto(filteredMedia, firstName, src, title) {
 
   // Gestionnaire d'événements du clavier
   function onKeyDown(event) {
+    // Vérifier si l'élément avec la classe "modal-photo" est présent
+    const modalPhoto = document.querySelector(".modal-photo");
+    if (!modalPhoto) {
+      return; // Quitter la fonction si l'élément n'est pas trouvé
+    }
+
     if (event.key === "ArrowRight") {
       afficherMediaSuivant();
     } else if (event.key === "ArrowLeft") {

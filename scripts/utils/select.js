@@ -1,47 +1,39 @@
-const menuButton = document.querySelector(".menu-button");
+// const menuSelected = document.querySelector(".menu-selected");
 const options = document.querySelector(".options");
 const optionItems = document.querySelectorAll(".option");
+const menuButton = document.getElementById("menu-button");
+const downArrow = document.querySelector(".fa-chevron-down");
+const upArrow = document.querySelector(".fa-chevron-up");
 
+upArrow.style.display = "none";
 
-// Fonction pour masquer les options
-function hideOptions() {
-    options.style.display = "none";
-    menuButton.setAttribute("aria-expanded", "false");
+//Deroule le menu selon la sourie
+options.addEventListener('mouseenter', expandList);
+options.addEventListener('mouseleave', collapseList);
+
+// Fonction pour dérouler le menu
+function expandList() {
+  options.setAttribute("aria-expanded", "true");
+  options.style.height = "auto";
+  downArrow.style.display = "none";
+  upArrow.style.display = "block";
+  const hyde = document.querySelectorAll(".hyde");
+  hyde.forEach((element) => {
+    element.style.opacity = "1";
+  });
 }
 
-// Gestionnaire d'événements de clic sur le document entier
-document.addEventListener("click", function(event) {
-    // Vérifier si le clic n'est pas sur le menuButton ni sur les options
-    if (!menuButton.contains(event.target) && !options.contains(event.target)) {
-        hideOptions();
-    }
-});
-
-
-menuButton.addEventListener("click", function () {
-  const expanded = this.getAttribute("aria-expanded") === "true" || false;
-  this.setAttribute("aria-expanded", !expanded);
-  options.style.display = expanded ? "none" : "block";
-
-  // Filtrer les options pour cacher celle déjà sélectionnée
-  optionItems.forEach((option) => {
-    if (option.getAttribute("aria-selected") === "true") {
-      option.style.display = "none";
-    } else {
-      option.style.display = "block";
-    }
+//Fonction pour fermer le menu
+function collapseList() {
+  options.setAttribute("aria-expanded", "false");
+  options.style.height = "69px";
+  downArrow.style.display = "block";
+  upArrow.style.display = "none";
+  const hyde = document.querySelectorAll(".hyde");
+  hyde.forEach((element) => {
+    element.style.opacity = "0";
   });
-});
-
-optionItems.forEach((option) => {
-  option.addEventListener("click", function () {
-    optionItems.forEach((item) => item.setAttribute("aria-selected", "false"));
-    this.setAttribute("aria-selected", "true");
-    menuButton.innerHTML = `${this.textContent} <i class="fas fa-chevron-down fa-chevron"></i> <i class="fas fa-chevron-up fa-chevron"></i>`;
-    options.style.display = "none";
-    menuButton.setAttribute("aria-expanded", "false");
-  });
-});
+}
 
 function selected(firstName, filteredMedia) {
   // Fonction pour afficher les médias en fonction de la valeur sélectionnée
@@ -64,19 +56,74 @@ function selected(firstName, filteredMedia) {
 
   optionItems.forEach((option) => {
     option.addEventListener("click", function () {
-        const selectedValue = this.innerText.trim().toLowerCase();
-        // Appelez la fonction pour afficher les médias réorganisés avec la valeur sélectionnée
-        displaySortedMedia(selectedValue);
+      const selectedValue = this.innerText.trim().toLowerCase();
+      // Appelez la fonction pour afficher les médias réorganisés avec la valeur sélectionnée
+      displaySortedMedia(selectedValue);
     });
   });
 
-
-  // Ecouter l'événement de changement sur le sélecteur
-  const selectElementValue = document
-    .getElementById("menu-button")
+  // Initialiser les photos
+  const selectElementValue = options
+    .querySelector("li")
     .innerText.trim()
     .toLowerCase();
 
   // Appeler la fonction pour afficher les médias réorganisés avec la valeur initiale du sélecteur
   displaySortedMedia(selectElementValue);
 }
+let selectedOptionIndex = 0; // Indice de l'option actuellement sélectionnée
+
+// Fonction pour mettre le focus sur l'option sélectionnée
+function focusSelectedOption() {
+  optionItems[selectedOptionIndex].focus();
+}
+
+// Gestion de la navigation avec les touches fléchées
+document.addEventListener("keydown", function (event) {
+  if (options.getAttribute("aria-expanded") === "true") {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      selectedOptionIndex = (selectedOptionIndex + 1) % optionItems.length;
+      focusSelectedOption();
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      selectedOptionIndex =
+        (selectedOptionIndex - 1 + optionItems.length) % optionItems.length;
+      focusSelectedOption();
+    } else if (event.key === "Enter") {
+      // Sélectionner l'option si "Entrée" est enfoncée
+      optionItems[selectedOptionIndex].click();
+    }
+  }
+});
+
+// Mettre à jour l'indice de l'option sélectionnée lorsqu'une option est cliquée
+optionItems.forEach((option, index) => {
+  option.addEventListener("click", function () {
+    selectedOptionIndex = index;
+    optionItems.forEach((item) => {
+      item.setAttribute("aria-selected", "false");
+      item.classList.remove("view");
+      item.classList.add("hyde");
+    });
+
+    this.setAttribute("aria-selected", "true");
+    this.classList.remove("hyde");
+    this.classList.add("view");
+    option.parentNode.prepend(option); //Le remet en premier à son parent
+  });
+});
+
+// Gérer le focus sur les options pour définir aria-expanded à true
+optionItems.forEach((option) => {
+  option.addEventListener("focus", function () {
+    expandList()
+  });
+});
+
+// Gérer le blur sur les options pour définir aria-expanded à false
+optionItems.forEach((option) => {
+  option.addEventListener("blur", function () {
+    collapseList()
+  });
+});

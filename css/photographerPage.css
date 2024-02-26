@@ -26,7 +26,7 @@
     cursor: pointer;
 }
 
-.contact_button:hover {
+.contact_button:hover, .contact_button:focus {
     background-color: #DB8876;
     color: black;
 }

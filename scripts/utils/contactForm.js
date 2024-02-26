@@ -1,6 +1,10 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+
+   // Mettre le focus sur l'élément input
+   const inputNom = document.getElementById("nom");
+   inputNom.focus();
 }
 
 function closeModal() {

@@ -12,39 +12,37 @@
 
 <body>
   <header>
-    <a href="./index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    <a href="./index.html" aria-label="Aller vers la page d'acceuil">
+      <img src="assets/images/logo.png" class="logo" alt="logo Fisheye" />
     </a>
   </header>
   <main id="main">
     <section class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button aria-label="ouvrir le formulaire de contact" class="contact_button"
+        onclick="displayModal()">Contactez-moi</button>
     </section>
 
     <label id="menu-label" for="menu-button" class="menu-label">Trier par </label>
-    <button class="menu" id="menu-button" role="button" aria-haspopup="listbox" aria-expanded="false"
-      aria-labelledby="menu-label">
-      <div class="menu-button" aria-selected="true">
-        Popularité
-        <i class="fas fa-chevron-down fa-chevron"></i>
-        <i class="fas fa-chevron-up fa-chevron"></i>
-      </div>
-      <div class="options" role="listbox" aria-labelledby="menu-button">
-        <div class="option" role="option" aria-selected="true" tabindex="0">Popularité</div>
-        <div class="option" role="option" aria-selected="false" tabindex="-1">Date</div>
-        <div class="option" role="option" aria-selected="false" tabindex="-1">Titre</div>
-      </div>
-    </button>
+    <div class="menu" id="menu-button">
+      <ul class="options" role="listbox" aria-expanded="false" aria-label="Trier les photo par">
+        <li class="option" role="option" aria-selected="true" tabindex="0">Popularité</li>
+        <li class="option hyde" role="option" aria-selected="false" tabindex="-1">Date</li>
+        <li class="option hyde" role="option" aria-selected="false" tabindex="-1">Titre</li>
+      </ul>
+      <span class="fas fa-chevron-up fa-chevron"></span>
+      <span class="fas fa-chevron-down fa-chevron"></span>
+    </div>
 
     <section class="photos"></section>
-    <div class="likes_price"></div>
+    <ul aria-label="Nombres de likes totals et prix de prestation par jour" class="likes_price"></ul>
   </main>
 
   <div id="contact_modal">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" aria-label="fermer la modal" alt="bouton pour fermer"
+          onclick="closeModal()" />
       </header>
       <form>
         <div>

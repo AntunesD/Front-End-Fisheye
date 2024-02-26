@@ -44,10 +44,9 @@ async function init() {
     // Extraire la première partie du nom du photographe
     const firstName = photographerName.split(" ")[0];
 
-    // Récupérer l'élément <h2> dans la modal
+    // Ajouter le nom du photographe a la modal de contact
     var modalHeader = document.querySelector("#contact_modal .modal header h2");
 
-    // Ajouter le nom du photographe à l'élément <h2>
     modalHeader.innerHTML += ` <br> ${photographerName}`;
 
     // Filtrer les médias par photographerId
@@ -75,7 +74,7 @@ function totalLikes(filteredMedia) {
   // Sélectionner l'élément où placer le résultat
   const likesPriceElement = document.querySelector(".likes_price");
   // Placer le résultat dans l'élément
-  const textTotalLikes = document.createElement("p");
+  const textTotalLikes = document.createElement("li");
   textTotalLikes.classList.add("likes_total");
   textTotalLikes.textContent = totalLikes.toString() + " \u2764";
   likesPriceElement.appendChild(textTotalLikes);

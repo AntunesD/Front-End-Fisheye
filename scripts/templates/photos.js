@@ -11,6 +11,11 @@ function displayPhotographerMedia(firstName, filteredMedia) {
 
     // Créer le lien pour afficher la modal
     const link = document.createElement("a");
+    link.href = "#";
+    link.setAttribute(
+      "aria-label",
+      `Ouvrir le média ${item.title} dans une modal`
+    );
     link.addEventListener("click", () => {
       displayModalPhoto(
         filteredMedia,
@@ -28,26 +33,34 @@ function displayPhotographerMedia(firstName, filteredMedia) {
     link.appendChild(imageElement);
 
     const info = document.createElement("div");
-    const titleElement = document.createElement("p");
+    const titleElement = document.createElement("h2");
     titleElement.textContent = item.title;
-    const like = document.createElement("p");
+    const like = document.createElement("span");
+    like.setAttribute("aria-label", "likes");
     like.textContent = item.likes + " \u2764";
 
-    // Ajouter l'événement de clic pour incrémenter les likes
+    // Ajouter l'événement de clic pour incrémenter et décrémenter les likes
     like.addEventListener("click", () => {
       const totalLikesElement = document.querySelector(".likes_total");
       let totalLikes = parseInt(totalLikesElement.textContent);
 
       // Vérifier si le like n'a pas déjà été donné
       if (!like.classList.contains("liked")) {
+        // Incrémenter les likes
         totalLikes++;
-        totalLikesElement.textContent = totalLikes + " \u2764";
         item.likes++;
-        like.textContent = item.likes + " \u2764";
-
-        // Ajouter la classe "liked" pour indiquer que le like a été donné
-        like.classList.add("liked");
+      } else {
+        // Décrémenter les likes
+        totalLikes--;
+        item.likes--;
       }
+
+      // Mettre à jour le contenu HTML avec le nouveau nombre de likes
+      totalLikesElement.textContent = totalLikes + " \u2764";
+      like.textContent = item.likes + " \u2764";
+
+      // Basculer la classe "liked" pour indiquer si le like a été donné ou retiré
+      like.classList.toggle("liked");
     });
 
     like.classList.add("likes");

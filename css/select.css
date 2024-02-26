@@ -8,6 +8,7 @@
 .menu {
     position: relative;
     display: inline-block;
+    height: 49px;
     font-size: 18px;
     font-weight: bold;
     appearance: none;
@@ -15,7 +16,7 @@
     background: none;
 }
 
-.menu-button {
+.menu-selected {
     width: 150px;
     min-height: 29px;
     background-color: #901C1C;
@@ -30,23 +31,40 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.menu-button:hover {
+.menu-selected:hover,
+#menu-button:focus .menu-selected {
     background-color: #DB8876;
     color: black;
 }
 
 .options {
     line-height: 49px;
-    display: none;
+    height: 69px;
     position: absolute;
     background-color: #901C1C;
     color: white;
     width: 190px;
     z-index: 1;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+
+.hyde {
+   opacity: 0;
+
+}
+
+.view {
+    opacity: 1;
+}
+
+.options:hover li,
+.options li:focus~li {
+    display: block;
+}
+
+
 
 .option {
     text-align: left;
@@ -56,30 +74,20 @@
     cursor: pointer;
 }
 
-.option:hover {
+.option:hover,
+.option:focus {
     background-color: #DB8876;
     color: black;
 }
 
-.fa-chevron-up::before {
-    display: none;
-}
-
-.fa-chevron-down {
+#menu-button span {
+    color: white;
     position: absolute;
-    right: 18px;
+    top: 25px;
+    z-index: 11;
+    left: 160px;
 }
 
-.menu-button[aria-expanded="true"] {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.menu-button[aria-expanded="true"] .fa-chevron-down {
-    display: none;
-}
-
-.menu-button[aria-expanded="true"] .fa-chevron-up::before {
-    display: inline;
-  
+.option[aria-selected="true"] {
+    border: none;
 }
