@@ -1,5 +1,12 @@
 // Fonction pour afficher la modal
 function displayModalPhoto(filteredMedia, firstName, src, title) {
+  // Vérifier si la modal existe déjà
+  const existingModal = document.querySelector(".modal-photo");
+  if (existingModal) {
+    // Si elle existe, la supprimer
+    existingModal.parentNode.removeChild(existingModal);
+  }
+
   // Créer la structure HTML de la modal
   const modal = document.createElement("div");
   modal.classList.add("modal-photo");

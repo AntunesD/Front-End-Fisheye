@@ -16,27 +16,6 @@
     background: none;
 }
 
-.menu-selected {
-    width: 150px;
-    min-height: 29px;
-    background-color: #901C1C;
-    color: white;
-    padding: 20px;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 5px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.menu-selected:hover,
-#menu-button:focus .menu-selected {
-    background-color: #DB8876;
-    color: black;
-}
-
 .options {
     line-height: 49px;
     height: 69px;

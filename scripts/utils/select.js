@@ -8,8 +8,8 @@ const upArrow = document.querySelector(".fa-chevron-up");
 upArrow.style.display = "none";
 
 //Deroule le menu selon la sourie
-options.addEventListener('mouseenter', expandList);
-options.addEventListener('mouseleave', collapseList);
+options.addEventListener("mouseenter", expandList);
+options.addEventListener("mouseleave", collapseList);
 
 // Fonction pour dérouler le menu
 function expandList() {
@@ -106,7 +106,7 @@ optionItems.forEach((option, index) => {
       item.classList.remove("view");
       item.classList.add("hyde");
     });
-
+    expandList();
     this.setAttribute("aria-selected", "true");
     this.classList.remove("hyde");
     this.classList.add("view");
@@ -117,13 +117,15 @@ optionItems.forEach((option, index) => {
 // Gérer le focus sur les options pour définir aria-expanded à true
 optionItems.forEach((option) => {
   option.addEventListener("focus", function () {
-    expandList()
+    expandList();
   });
 });
 
-// Gérer le blur sur les options pour définir aria-expanded à false
-optionItems.forEach((option) => {
-  option.addEventListener("blur", function () {
-    collapseList()
-  });
+// Écouter les événements de clavier pour détecter la touche Tab
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Tab") {
+    if (options && !options.contains(document.activeElement)) {
+      collapseList();
+    }
+  }
 });
