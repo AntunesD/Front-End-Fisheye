@@ -1,3 +1,18 @@
+function createElement(item, firstName) {
+  if (item.image) {
+    const mediaElementType = document.createElement("img");
+    mediaElementType.src = `../../assets/images/${firstName}/${item.image}`;
+    return mediaElementType;
+  } else if (item.video) {
+    const mediaElementType = document.createElement("video");
+    mediaElementType.src = `../../assets/images/${firstName}/${item.video}`;
+    return mediaElementType;
+  } else {
+    console.error("Erreur: Aucun élément image ou vidéo spécifié.");
+    return null;
+  }
+}
+
 function displayPhotographerMedia(firstName, filteredMedia) {
   // Sélectionner la section où afficher les médias
   const photosSection = document.querySelector(".photos");
@@ -25,12 +40,9 @@ function displayPhotographerMedia(firstName, filteredMedia) {
       );
     });
 
-    const imageElement = document.createElement(item.image ? "img" : "video");
-    imageElement.src = `../../assets/images/${firstName}/${
-      item.image ? item.image : item.video
-    }`;
-    imageElement.alt = item.title;
-    link.appendChild(imageElement);
+    const mediaElementType = createElement(item, firstName);
+    mediaElementType.alt = item.title;
+    link.appendChild(mediaElementType);
 
     const info = document.createElement("div");
     const titleElement = document.createElement("h2");

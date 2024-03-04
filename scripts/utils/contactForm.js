@@ -22,7 +22,6 @@ window.addEventListener("click", function (event) {
 
 // Gestionnaire d'événement pour fermer la modal lorsque l'utilisateur appuie sur la touche "Escape"
 window.addEventListener("keydown", function (event) {
-  const modal = document.getElementById("contact_modal");
   if (event.key === "Escape") {
     closeModal();
   }

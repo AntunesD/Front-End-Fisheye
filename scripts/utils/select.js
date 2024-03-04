@@ -20,6 +20,7 @@ function expandList() {
   const hyde = document.querySelectorAll(".hyde");
   hyde.forEach((element) => {
     element.style.opacity = "1";
+    element.style.position = "static";
   });
 }
 
@@ -32,6 +33,8 @@ function collapseList() {
   const hyde = document.querySelectorAll(".hyde");
   hyde.forEach((element) => {
     element.style.opacity = "0";
+    element.style.position = "absolute";
+    element.style.top = "0";
   });
 }
 

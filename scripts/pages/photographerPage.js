@@ -19,11 +19,15 @@ async function displayPhotographerData(photographers) {
 // Initialise l'application
 async function init() {
   try {
-    // Récupère l'ID stocké dans le local storage
-    const photographerId = localStorage.getItem("selectedPhotographerId");
+    // Obtient les paramètres de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Récupère l'ID du photographe à partir des paramètres de l'URL
+    const photographerId = urlParams.get("photographeId");
+    console.log(photographerId);
 
     if (!photographerId) {
-      console.error("ID du photographe non trouvé dans le stockage local.");
+      console.error("ID du photographe non trouvé.");
       return;
     }
 

@@ -9,13 +9,8 @@ function photographerTemplate(data, titleType) {
     // Lien pour img
     const link = document.createElement("a");
     link.classList.add("profil-link");
-    link.href = `../../photographer.html?${id}`;
+    link.href = `../../photographer.html?photographeId=${id}`;
     link.setAttribute("aria-label", `page de ${name}`);
-
-    // Mettre l'id du photographe dans le storage au click
-    link.addEventListener("click", function () {
-      localStorage.setItem("selectedPhotographerId", id);
-    });
 
     const img = document.createElement("img");
     img.setAttribute("src", picture);

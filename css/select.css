@@ -30,19 +30,14 @@
 
 
 .hyde {
-   opacity: 0;
-
+    opacity: 0;
+    position: absolute;
+    top: 0;
 }
 
 .view {
     opacity: 1;
 }
-
-.options:hover li,
-.options li:focus~li {
-    display: block;
-}
-
 
 
 .option {
